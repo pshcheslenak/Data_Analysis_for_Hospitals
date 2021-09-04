@@ -1,4 +1,5 @@
 import pandas as pd
+import matplotlib.pyplot as plt
 
 pd.set_option('display.max_columns', 8)
 
@@ -62,9 +63,34 @@ for hospital in hospitals:
 # In hospital the blood test was taken the most often
 statistics.append(max(hospital_blood_test, key=hospital_blood_test.get))
 statistics.append(max(hospital_blood_test.values()))
+
+# The most common age of a patient among all hospitals
+# choose one of the following age ranges: 0 - 15, 15 - 35, 35 - 55, 55 - 70, or 70 - 80
+df_hospitals.plot(y=['age'], kind='hist', bins=5)
+plt.show()
+# From histogram - '15 - 35'
+statistics.append('15 - 35')
+
+# The most common diagnosis among patients in all hospitals
+df_hospitals.diagnosis.value_counts().plot(kind='pie')
+plt.show()
+# From pie chart - 'pregnancy'
+statistics.append('pregnancy')
+
+# Build a violin plot of height distribution by hospitals.
+# Try to answer the questions. What is the main reason for
+# the gap in values? Why there are two peaks, which correspond
+# to the relatively small and big values?
+plt.violinplot(df_hospitals.height)
+plt.show()
+
 # Report
-print(f'The answer to the 1st question is {statistics[0]}')
-print(f'The answer to the 2nd question is {statistics[1]}')
-print(f'The answer to the 3rd question is {statistics[2]}')
-print(f'The answer to the 4th question is {statistics[3]}')
-print(f'The answer to the 5th question is {statistics[4]}, {statistics[5]} blood tests')
+# print(f'The answer to the 1st question is {statistics[0]}')
+# print(f'The answer to the 2nd question is {statistics[1]}')
+# print(f'The answer to the 3rd question is {statistics[2]}')
+# print(f'The answer to the 4th question is {statistics[3]}')
+# print(f'The answer to the 5th question is {statistics[4]}, {statistics[5]} blood tests')
+
+print(f'The answer to the 1st question: {statistics[6]}')
+print(f'The answer to the 2nd question: {statistics[7]}')
+print(f'The answer to the 3rd question: fdgjdfgjldfjlf')
